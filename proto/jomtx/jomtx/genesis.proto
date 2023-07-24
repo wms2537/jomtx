@@ -1,0 +1,12 @@
+syntax = "proto3";
+package jomtx.jomtx;
+
+import "gogoproto/gogo.proto";
+import "jomtx/jomtx/params.proto";
+
+option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
+
+// GenesisState defines the jomtx module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}

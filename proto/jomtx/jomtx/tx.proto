@@ -1,0 +1,7 @@
+syntax = "proto3";
+package jomtx.jomtx;
+
+option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
+
+// Msg defines the Msg service.
+service Msg {}
