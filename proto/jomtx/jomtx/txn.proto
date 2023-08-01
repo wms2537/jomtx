@@ -1,0 +1,14 @@
+syntax = "proto3";
+package jomtx.jomtx;
+
+option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
+
+message Txn {
+  uint64 id = 1;
+  string invoiceNo = 2; 
+  string quantity = 3; 
+  string items = 4; 
+  string remarks = 5; 
+  repeated string files = 6; 
+  string creator = 7;
+}

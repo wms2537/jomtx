@@ -1,7 +1,46 @@
 syntax = "proto3";
+
 package jomtx.jomtx;
+
+import "jomtx/jomtx/txn.proto";
 
 option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc CreateTxn (MsgCreateTxn) returns (MsgCreateTxnResponse);
+  rpc UpdateTxn (MsgUpdateTxn) returns (MsgUpdateTxnResponse);
+  rpc DeleteTxn (MsgDeleteTxn) returns (MsgDeleteTxnResponse);
+}
+message MsgCreateTxn {
+           string creator   = 1;
+           string invoiceNo = 2;
+           string quantity  = 3;
+           string items     = 4;
+           string remarks   = 5;
+  repeated string files     = 6;
+}
+
+message MsgCreateTxnResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateTxn {
+           string creator   = 1;
+           uint64 id        = 2;
+           string invoiceNo = 3;
+           string quantity  = 4;
+           string items     = 5;
+           string remarks   = 6;
+  repeated string files     = 7;
+}
+
+message MsgUpdateTxnResponse {}
+
+message MsgDeleteTxn {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteTxnResponse {}
+

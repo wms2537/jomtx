@@ -1,26 +1,58 @@
 syntax = "proto3";
+
 package jomtx.jomtx;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "jomtx/jomtx/params.proto";
+import "jomtx/jomtx/txn.proto";
 
 option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/jomluz/jomtx/jomtx/params";
+  
+  }
+  
+  // Queries a list of Txn items.
+  rpc Txn    (QueryGetTxnRequest) returns (QueryGetTxnResponse) {
+    option (google.api.http).get = "/jomluz/jomtx/jomtx/txn/{id}";
+  
+  }
+  rpc TxnAll (QueryAllTxnRequest) returns (QueryAllTxnResponse) {
+    option (google.api.http).get = "/jomluz/jomtx/jomtx/txn";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
 }
+
+message QueryGetTxnRequest {
+  uint64 id = 1;
+}
+
+message QueryGetTxnResponse {
+  Txn Txn = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllTxnRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllTxnResponse {
+  repeated Txn                                    Txn        = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
