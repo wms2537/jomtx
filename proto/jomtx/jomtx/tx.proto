@@ -11,6 +11,7 @@ service Msg {
   rpc CreateTxn (MsgCreateTxn) returns (MsgCreateTxnResponse);
   rpc UpdateTxn (MsgUpdateTxn) returns (MsgUpdateTxnResponse);
   rpc DeleteTxn (MsgDeleteTxn) returns (MsgDeleteTxnResponse);
+  rpc ClaimTxn  (MsgClaimTxn ) returns (MsgClaimTxnResponse );
 }
 message MsgCreateTxn {
            string creator   = 1;
@@ -43,4 +44,11 @@ message MsgDeleteTxn {
 }
 
 message MsgDeleteTxnResponse {}
+
+message MsgClaimTxn {
+  string creator = 1;
+  string txnId   = 2;
+}
+
+message MsgClaimTxnResponse {}
 

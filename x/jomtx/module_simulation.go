@@ -35,6 +35,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgDeleteTxn int = 100
 
+	opWeightMsgClaimTxn = "op_weight_msg_claim_txn"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgClaimTxn int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -107,6 +111,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgClaimTxn int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgClaimTxn, &weightMsgClaimTxn, nil,
+		func(_ *rand.Rand) {
+			weightMsgClaimTxn = defaultWeightMsgClaimTxn
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgClaimTxn,
+		jomtxsimulation.SimulateMsgClaimTxn(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -136,6 +151,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgDeleteTxn,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgClaimTxn,
+			defaultWeightMsgClaimTxn,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				jomtxsimulation.SimulateMsgClaimTxn(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),
