@@ -27,13 +27,13 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateTxn int = 100
 
-	opWeightMsgUpdateTxn = "op_weight_msg_txn"
-	// TODO: Determine the simulation weight value
-	defaultWeightMsgUpdateTxn int = 100
+	// opWeightMsgUpdateTxn = "op_weight_msg_txn"
+	// // TODO: Determine the simulation weight value
+	// defaultWeightMsgUpdateTxn int = 100
 
-	opWeightMsgDeleteTxn = "op_weight_msg_txn"
-	// TODO: Determine the simulation weight value
-	defaultWeightMsgDeleteTxn int = 100
+	// opWeightMsgDeleteTxn = "op_weight_msg_txn"
+	// // TODO: Determine the simulation weight value
+	// defaultWeightMsgDeleteTxn int = 100
 
 	opWeightMsgClaimTxn = "op_weight_msg_claim_txn"
 	// TODO: Determine the simulation weight value
@@ -89,27 +89,27 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		jomtxsimulation.SimulateMsgCreateTxn(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
-	var weightMsgUpdateTxn int
-	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdateTxn, &weightMsgUpdateTxn, nil,
-		func(_ *rand.Rand) {
-			weightMsgUpdateTxn = defaultWeightMsgUpdateTxn
-		},
-	)
-	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgUpdateTxn,
-		jomtxsimulation.SimulateMsgUpdateTxn(am.accountKeeper, am.bankKeeper, am.keeper),
-	))
+	// var weightMsgUpdateTxn int
+	// simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdateTxn, &weightMsgUpdateTxn, nil,
+	// 	func(_ *rand.Rand) {
+	// 		weightMsgUpdateTxn = defaultWeightMsgUpdateTxn
+	// 	},
+	// )
+	// operations = append(operations, simulation.NewWeightedOperation(
+	// 	weightMsgUpdateTxn,
+	// 	jomtxsimulation.SimulateMsgUpdateTxn(am.accountKeeper, am.bankKeeper, am.keeper),
+	// ))
 
-	var weightMsgDeleteTxn int
-	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteTxn, &weightMsgDeleteTxn, nil,
-		func(_ *rand.Rand) {
-			weightMsgDeleteTxn = defaultWeightMsgDeleteTxn
-		},
-	)
-	operations = append(operations, simulation.NewWeightedOperation(
-		weightMsgDeleteTxn,
-		jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper),
-	))
+	// var weightMsgDeleteTxn int
+	// simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteTxn, &weightMsgDeleteTxn, nil,
+	// 	func(_ *rand.Rand) {
+	// 		weightMsgDeleteTxn = defaultWeightMsgDeleteTxn
+	// 	},
+	// )
+	// operations = append(operations, simulation.NewWeightedOperation(
+	// 	weightMsgDeleteTxn,
+	// 	jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper),
+	// ))
 
 	var weightMsgClaimTxn int
 	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgClaimTxn, &weightMsgClaimTxn, nil,
@@ -138,22 +138,22 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 				return nil
 			},
 		),
-		simulation.NewWeightedProposalMsg(
-			opWeightMsgUpdateTxn,
-			defaultWeightMsgUpdateTxn,
-			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				jomtxsimulation.SimulateMsgUpdateTxn(am.accountKeeper, am.bankKeeper, am.keeper)
-				return nil
-			},
-		),
-		simulation.NewWeightedProposalMsg(
-			opWeightMsgDeleteTxn,
-			defaultWeightMsgDeleteTxn,
-			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
-				jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper)
-				return nil
-			},
-		),
+		// simulation.NewWeightedProposalMsg(
+		// 	opWeightMsgUpdateTxn,
+		// 	defaultWeightMsgUpdateTxn,
+		// 	func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+		// 		jomtxsimulation.SimulateMsgUpdateTxn(am.accountKeeper, am.bankKeeper, am.keeper)
+		// 		return nil
+		// 	},
+		// ),
+		// simulation.NewWeightedProposalMsg(
+		// 	opWeightMsgDeleteTxn,
+		// 	defaultWeightMsgDeleteTxn,
+		// 	func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+		// 		jomtxsimulation.SimulateMsgDeleteTxn(am.accountKeeper, am.bankKeeper, am.keeper)
+		// 		return nil
+		// 	},
+		// ),
 		simulation.NewWeightedProposalMsg(
 			opWeightMsgClaimTxn,
 			defaultWeightMsgClaimTxn,

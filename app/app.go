@@ -113,6 +113,7 @@ import (
 	jomtxmodule "github.com/jomluz/jomtx/x/jomtx"
 	jomtxmodulekeeper "github.com/jomluz/jomtx/x/jomtx/keeper"
 	jomtxmoduletypes "github.com/jomluz/jomtx/x/jomtx/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "github.com/jomluz/jomtx/app/params"
@@ -120,7 +121,7 @@ import (
 )
 
 const (
-	AccountAddressPrefix = "cosmos"
+	AccountAddressPrefix = "jomtx"
 	Name                 = "jomtx"
 )
 

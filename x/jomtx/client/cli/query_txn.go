@@ -9,41 +9,41 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CmdListTxn() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "list-txn",
-		Short: "list all txn",
-		RunE: func(cmd *cobra.Command, args []string) error {
-			clientCtx, err := client.GetClientQueryContext(cmd)
-			if err != nil {
-				return err
-			}
+// func CmdListTxn() *cobra.Command {
+// 	cmd := &cobra.Command{
+// 		Use:   "list-txn",
+// 		Short: "list all txn",
+// 		RunE: func(cmd *cobra.Command, args []string) error {
+// 			clientCtx, err := client.GetClientQueryContext(cmd)
+// 			if err != nil {
+// 				return err
+// 			}
 
-			pageReq, err := client.ReadPageRequest(cmd.Flags())
-			if err != nil {
-				return err
-			}
+// 			pageReq, err := client.ReadPageRequest(cmd.Flags())
+// 			if err != nil {
+// 				return err
+// 			}
 
-			queryClient := types.NewQueryClient(clientCtx)
+// 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryAllTxnRequest{
-				Pagination: pageReq,
-			}
+// 			params := &types.QueryAllTxnRequest{
+// 				Pagination: pageReq,
+// 			}
 
-			res, err := queryClient.TxnAll(cmd.Context(), params)
-			if err != nil {
-				return err
-			}
+// 			res, err := queryClient.TxnAll(cmd.Context(), params)
+// 			if err != nil {
+// 				return err
+// 			}
 
-			return clientCtx.PrintProto(res)
-		},
-	}
+// 			return clientCtx.PrintProto(res)
+// 		},
+// 	}
 
-	flags.AddPaginationFlagsToCmd(cmd, cmd.Use)
-	flags.AddQueryFlagsToCmd(cmd)
+// 	flags.AddPaginationFlagsToCmd(cmd, cmd.Use)
+// 	flags.AddQueryFlagsToCmd(cmd)
 
-	return cmd
-}
+// 	return cmd
+// }
 
 func CmdShowTxn() *cobra.Command {
 	cmd := &cobra.Command{

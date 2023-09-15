@@ -9,8 +9,8 @@ option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
 // Msg defines the Msg service.
 service Msg {
   rpc CreateTxn (MsgCreateTxn) returns (MsgCreateTxnResponse);
-  rpc UpdateTxn (MsgUpdateTxn) returns (MsgUpdateTxnResponse);
-  rpc DeleteTxn (MsgDeleteTxn) returns (MsgDeleteTxnResponse);
+  // rpc UpdateTxn (MsgUpdateTxn) returns (MsgUpdateTxnResponse);
+  // rpc DeleteTxn (MsgDeleteTxn) returns (MsgDeleteTxnResponse);
   rpc ClaimTxn  (MsgClaimTxn ) returns (MsgClaimTxnResponse );
 }
 message MsgCreateTxn {
@@ -26,24 +26,24 @@ message MsgCreateTxnResponse {
   uint64 id = 1;
 }
 
-message MsgUpdateTxn {
-           string creator   = 1;
-           uint64 id        = 2;
-           string invoiceNo = 3;
-           string quantity  = 4;
-           string items     = 5;
-           string remarks   = 6;
-  repeated string files     = 7;
-}
+// message MsgUpdateTxn {
+//            string creator   = 1;
+//            uint64 id        = 2;
+//            string invoiceNo = 3;
+//            string quantity  = 4;
+//            string items     = 5;
+//            string remarks   = 6;
+//   repeated string files     = 7;
+// }
 
-message MsgUpdateTxnResponse {}
+// message MsgUpdateTxnResponse {}
 
-message MsgDeleteTxn {
-  string creator = 1;
-  uint64 id      = 2;
-}
+// message MsgDeleteTxn {
+//   string creator = 1;
+//   uint64 id      = 2;
+// }
 
-message MsgDeleteTxnResponse {}
+// message MsgDeleteTxnResponse {}
 
 message MsgClaimTxn {
   string creator = 1;

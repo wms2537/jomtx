@@ -11,4 +11,5 @@ message Txn {
   string remarks = 5; 
   repeated string files = 6; 
   string creator = 7;
+  string customer = 8;
 }
