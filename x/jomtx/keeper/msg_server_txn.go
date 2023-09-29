@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"strconv"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/jomluz/jomtx/x/jomtx/types"
@@ -13,7 +14,7 @@ func (k msgServer) CreateTxn(goCtx context.Context, msg *types.MsgCreateTxn) (*t
 	var txn = types.Txn{
 		Creator:   msg.Creator,
 		InvoiceNo: msg.InvoiceNo,
-		Quantity:  msg.Quantity,
+		Proofs:    msg.Proofs,
 		Items:     msg.Items,
 		Remarks:   msg.Remarks,
 		Files:     msg.Files,
@@ -22,6 +23,13 @@ func (k msgServer) CreateTxn(goCtx context.Context, msg *types.MsgCreateTxn) (*t
 	id := k.AppendTxn(
 		ctx,
 		txn,
+	)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(types.TxnCreatedEventType,
+			sdk.NewAttribute(types.TxnCreatedEventCreator, msg.Creator),
+			sdk.NewAttribute(types.TxnCreatedEventTxnId, strconv.FormatUint(id, 10)),
+		),
 	)
 
 	return &types.MsgCreateTxnResponse{

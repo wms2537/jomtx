@@ -12,12 +12,12 @@ import (
 
 func CmdCreateTxn() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-txn [invoice-no] [quantity] [items] [remarks] [files]",
+		Use:   "create-txn [invoice-no] [proofs] [items] [remarks] [files]",
 		Short: "Create a new txn",
 		Args:  cobra.ExactArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argInvoiceNo := args[0]
-			argQuantity := args[1]
+			argProofs := strings.Split(args[1], listSeparator)
 			argItems := args[2]
 			argRemarks := args[3]
 			argFiles := strings.Split(args[4], listSeparator)
@@ -27,7 +27,7 @@ func CmdCreateTxn() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgCreateTxn(clientCtx.GetFromAddress().String(), argInvoiceNo, argQuantity, argItems, argRemarks, argFiles)
+			msg := types.NewMsgCreateTxn(clientCtx.GetFromAddress().String(), argInvoiceNo, argProofs, argItems, argRemarks, argFiles)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

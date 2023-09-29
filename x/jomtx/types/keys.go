@@ -22,3 +22,9 @@ const (
 	TxnKey      = "Txn/value/"
 	TxnCountKey = "Txn/count/"
 )
+
+const (
+	TxnCreatedEventType    = "new-txn-created" // Indicates what event type to listen to
+	TxnCreatedEventCreator = "creator"         // Subsidiary information
+	TxnCreatedEventTxnId   = "txn-id"          // What txn is relevant
+)

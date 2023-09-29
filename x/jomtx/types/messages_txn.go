@@ -13,11 +13,11 @@ const (
 
 var _ sdk.Msg = &MsgCreateTxn{}
 
-func NewMsgCreateTxn(creator string, invoiceNo string, quantity string, items string, remarks string, files []string) *MsgCreateTxn {
+func NewMsgCreateTxn(creator string, invoiceNo string, proofs []string, items string, remarks string, files []string) *MsgCreateTxn {
 	return &MsgCreateTxn{
 		Creator:   creator,
 		InvoiceNo: invoiceNo,
-		Quantity:  quantity,
+		Proofs:    proofs,
 		Items:     items,
 		Remarks:   remarks,
 		Files:     files,

@@ -46488,11 +46488,12 @@ paths:
                 properties:
                   id:
                     type: string
-                    format: uint64
                   invoiceNo:
                     type: string
-                  quantity:
-                    type: string
+                  proofs:
+                    type: array
+                    items:
+                      type: string
                   items:
                     type: string
                   remarks:
@@ -46528,7 +46529,6 @@ paths:
           in: path
           required: true
           type: string
-          format: uint64
       tags:
         - Query
 definitions:
@@ -75275,7 +75275,7 @@ definitions:
   jomtx.jomtx.MsgCreateTxnResponse:
     type: object
     properties:
-      id:
+      string:
         type: string
         format: uint64
   jomtx.jomtx.Params:
@@ -75289,11 +75289,12 @@ definitions:
         properties:
           id:
             type: string
-            format: uint64
           invoiceNo:
             type: string
-          quantity:
-            type: string
+          proofs:
+            type: array
+            items:
+              type: string
           items:
             type: string
           remarks:
@@ -75318,11 +75319,12 @@ definitions:
     properties:
       id:
         type: string
-        format: uint64
       invoiceNo:
         type: string
-      quantity:
-        type: string
+      proofs:
+        type: array
+        items:
+          type: string
       items:
         type: string
       remarks:
