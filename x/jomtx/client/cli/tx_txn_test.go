@@ -10,8 +10,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/jomluz/jomtx/testutil/network"
-	"github.com/jomluz/jomtx/x/jomtx/client/cli"
+	"github.com/wms2537/jomtx/testutil/network"
+	"github.com/wms2537/jomtx/x/jomtx/client/cli"
 )
 
 func TestCreateTxn(t *testing.T) {

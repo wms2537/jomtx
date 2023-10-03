@@ -8,9 +8,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
-	"github.com/jomluz/jomtx/testutil/sample"
-	jomtxsimulation "github.com/jomluz/jomtx/x/jomtx/simulation"
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	"github.com/wms2537/jomtx/testutil/sample"
+	jomtxsimulation "github.com/wms2537/jomtx/x/jomtx/simulation"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 // avoid unused import issue

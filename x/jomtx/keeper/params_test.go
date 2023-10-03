@@ -3,9 +3,9 @@ package keeper_test
 import (
 	"testing"
 
-	testkeeper "github.com/jomluz/jomtx/testutil/keeper"
-	"github.com/jomluz/jomtx/x/jomtx/types"
 	"github.com/stretchr/testify/require"
+	testkeeper "github.com/wms2537/jomtx/testutil/keeper"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func TestGetParams(t *testing.T) {

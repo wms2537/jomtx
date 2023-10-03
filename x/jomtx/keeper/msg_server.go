@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 type msgServer struct {

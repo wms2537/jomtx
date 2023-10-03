@@ -10,10 +10,10 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/jomluz/jomtx/testutil/network"
-	"github.com/jomluz/jomtx/testutil/nullify"
-	"github.com/jomluz/jomtx/x/jomtx/client/cli"
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	"github.com/wms2537/jomtx/testutil/network"
+	"github.com/wms2537/jomtx/testutil/nullify"
+	"github.com/wms2537/jomtx/x/jomtx/client/cli"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func networkWithTxnObjects(t *testing.T, n int) (*network.Network, []types.Txn) {

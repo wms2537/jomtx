@@ -9,9 +9,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	keepertest "github.com/jomluz/jomtx/testutil/keeper"
-	"github.com/jomluz/jomtx/testutil/nullify"
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	keepertest "github.com/wms2537/jomtx/testutil/keeper"
+	"github.com/wms2537/jomtx/testutil/nullify"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func TestTxnQuerySingle(t *testing.T) {

@@ -12,9 +12,9 @@ import (
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	typesparams "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/jomluz/jomtx/x/jomtx/keeper"
-	"github.com/jomluz/jomtx/x/jomtx/types"
 	"github.com/stretchr/testify/require"
+	"github.com/wms2537/jomtx/x/jomtx/keeper"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func JomtxKeeper(t testing.TB) (*keeper.Keeper, sdk.Context) {

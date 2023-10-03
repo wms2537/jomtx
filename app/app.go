@@ -110,14 +110,14 @@ import (
 	ibctm "github.com/cosmos/ibc-go/v7/modules/light-clients/07-tendermint"
 	"github.com/spf13/cast"
 
-	jomtxmodule "github.com/jomluz/jomtx/x/jomtx"
-	jomtxmodulekeeper "github.com/jomluz/jomtx/x/jomtx/keeper"
-	jomtxmoduletypes "github.com/jomluz/jomtx/x/jomtx/types"
+	jomtxmodule "github.com/wms2537/jomtx/x/jomtx"
+	jomtxmodulekeeper "github.com/wms2537/jomtx/x/jomtx/keeper"
+	jomtxmoduletypes "github.com/wms2537/jomtx/x/jomtx/types"
 
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	appparams "github.com/jomluz/jomtx/app/params"
-	"github.com/jomluz/jomtx/docs"
+	appparams "github.com/wms2537/jomtx/app/params"
+	"github.com/wms2537/jomtx/docs"
 )
 
 const (

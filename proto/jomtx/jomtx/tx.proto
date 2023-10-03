@@ -4,7 +4,7 @@ package jomtx.jomtx;
 
 import "jomtx/jomtx/txn.proto";
 
-option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
+option go_package = "github.com/wms2537/jomtx/x/jomtx/types";
 
 // Msg defines the Msg service.
 service Msg {

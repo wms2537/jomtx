@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	"github.com/jomluz/jomtx/testutil/sample"
 	"github.com/stretchr/testify/require"
+	"github.com/wms2537/jomtx/testutil/sample"
 )
 
 func TestMsgCreateTxn_ValidateBasic(t *testing.T) {

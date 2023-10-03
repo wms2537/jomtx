@@ -2,8 +2,8 @@ package jomtx
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/jomluz/jomtx/x/jomtx/keeper"
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	"github.com/wms2537/jomtx/x/jomtx/keeper"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 // InitGenesis initializes the module's state from a provided genesis state.

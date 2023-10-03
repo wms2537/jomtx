@@ -3,8 +3,8 @@ package types_test
 import (
 	"testing"
 
-	"github.com/jomluz/jomtx/x/jomtx/types"
 	"github.com/stretchr/testify/require"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {

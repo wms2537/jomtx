@@ -8,7 +8,7 @@ import "cosmos/base/query/v1beta1/pagination.proto";
 import "jomtx/jomtx/params.proto";
 import "jomtx/jomtx/txn.proto";
 
-option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
+option go_package = "github.com/wms2537/jomtx/x/jomtx/types";
 
 // Query defines the gRPC querier service.
 service Query {

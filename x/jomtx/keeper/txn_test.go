@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	keepertest "github.com/jomluz/jomtx/testutil/keeper"
-	"github.com/jomluz/jomtx/testutil/nullify"
-	"github.com/jomluz/jomtx/x/jomtx/keeper"
-	"github.com/jomluz/jomtx/x/jomtx/types"
 	"github.com/stretchr/testify/require"
+	keepertest "github.com/wms2537/jomtx/testutil/keeper"
+	"github.com/wms2537/jomtx/testutil/nullify"
+	"github.com/wms2537/jomtx/x/jomtx/keeper"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func createNTxn(keeper *keeper.Keeper, ctx sdk.Context, n int) []types.Txn {

@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/jomluz/jomtx/x/jomtx/types"
+	"github.com/wms2537/jomtx/x/jomtx/types"
 )
 
 func (k msgServer) PinIpfs(goCtx context.Context, msg *types.MsgPinIpfs) (*types.MsgPinIpfsResponse, error) {
