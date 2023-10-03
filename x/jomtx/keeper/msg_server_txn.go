@@ -18,6 +18,9 @@ func (k msgServer) CreateTxn(goCtx context.Context, msg *types.MsgCreateTxn) (*t
 		Items:     msg.Items,
 		Remarks:   msg.Remarks,
 		Files:     msg.Files,
+		Total:     msg.Total,
+		Currency:  msg.Currency,
+		Decimals:  msg.Decimals,
 	}
 
 	id := k.AppendTxn(

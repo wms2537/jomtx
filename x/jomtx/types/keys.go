@@ -24,7 +24,18 @@ const (
 )
 
 const (
-	TxnCreatedEventType    = "new-txn-created" // Indicates what event type to listen to
-	TxnCreatedEventCreator = "creator"         // Subsidiary information
-	TxnCreatedEventTxnId   = "txn-id"          // What txn is relevant
+	TxnCreatedEventType      = "new-txn-created" // Indicates what event type to listen to
+	TxnCreatedEventCreator   = "creator"         // Subsidiary information
+	TxnCreatedEventTxnId     = "txn-id"          // What txn is relevant
+	PinIpfsEventType         = "pin-ipfs"
+	PinIpfsEventCID          = "cid"
+	PinIpfsEventExpectedSize = "size"
+	TxnClaimedEventType      = "txn-claimed"
+	TxnClaimedEventTxnId     = "txn-id"
+	TxnClaimedEventCreator   = "creator"
+	TxnClaimedEventCustomer  = "customer"
+	TxnClaimedEventItems     = "items"
+	TxnClaimedEventTotal     = "total"
+	TxnClaimedEventCurrency  = "currency"
+	TxnClaimedEventDecimals  = "decimals"
 )

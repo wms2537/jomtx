@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 
 	sdkerrors "cosmossdk.io/errors"
@@ -31,5 +32,18 @@ func (k msgServer) ClaimTxn(goCtx context.Context, msg *types.MsgClaimTxn) (*typ
 	val.Customer = msg.Creator
 
 	k.SetTxn(ctx, val)
+
+	ctx.EventManager().EmitEvent(
+		sdk.NewEvent(types.TxnClaimedEventType,
+			sdk.NewAttribute(types.TxnClaimedEventCreator, val.Creator),
+			sdk.NewAttribute(types.TxnClaimedEventTxnId, msg.TxnId),
+			sdk.NewAttribute(types.TxnClaimedEventCustomer, msg.Creator),
+			sdk.NewAttribute(types.TxnClaimedEventItems, val.Items),
+			sdk.NewAttribute(types.TxnClaimedEventTotal, fmt.Sprintf("%d", val.Total)),
+			sdk.NewAttribute(types.TxnClaimedEventCurrency, val.Currency),
+			sdk.NewAttribute(types.TxnClaimedEventDecimals, fmt.Sprintf("%d", val.Decimals)),
+		),
+	)
+
 	return &types.MsgClaimTxnResponse{}, nil
 }

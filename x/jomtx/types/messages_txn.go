@@ -13,7 +13,7 @@ const (
 
 var _ sdk.Msg = &MsgCreateTxn{}
 
-func NewMsgCreateTxn(creator string, invoiceNo string, proofs []string, items string, remarks string, files []string) *MsgCreateTxn {
+func NewMsgCreateTxn(creator string, invoiceNo string, proofs []string, items string, remarks string, files []string, total uint64, currency string, decimals uint32) *MsgCreateTxn {
 	return &MsgCreateTxn{
 		Creator:   creator,
 		InvoiceNo: invoiceNo,
@@ -21,6 +21,9 @@ func NewMsgCreateTxn(creator string, invoiceNo string, proofs []string, items st
 		Items:     items,
 		Remarks:   remarks,
 		Files:     files,
+		Total:     total,
+		Currency:  currency,
+		Decimals:  decimals,
 	}
 }
 

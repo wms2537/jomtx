@@ -39,6 +39,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgClaimTxn int = 100
 
+	opWeightMsgPinIpfs = "op_weight_msg_pin_ipfs"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgPinIpfs int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -122,6 +126,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		jomtxsimulation.SimulateMsgClaimTxn(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgPinIpfs int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgPinIpfs, &weightMsgPinIpfs, nil,
+		func(_ *rand.Rand) {
+			weightMsgPinIpfs = defaultWeightMsgPinIpfs
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgPinIpfs,
+		jomtxsimulation.SimulateMsgPinIpfs(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -159,6 +174,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgClaimTxn,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				jomtxsimulation.SimulateMsgClaimTxn(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgPinIpfs,
+			defaultWeightMsgPinIpfs,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				jomtxsimulation.SimulateMsgPinIpfs(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

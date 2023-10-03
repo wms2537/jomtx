@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -12,7 +13,7 @@ import (
 
 func CmdCreateTxn() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-txn [invoice-no] [proofs] [items] [remarks] [files]",
+		Use:   "create-txn [invoice-no] [proofs] [items] [remarks] [files] [total] [currency] [decimals]",
 		Short: "Create a new txn",
 		Args:  cobra.ExactArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
@@ -21,13 +22,16 @@ func CmdCreateTxn() *cobra.Command {
 			argItems := args[2]
 			argRemarks := args[3]
 			argFiles := strings.Split(args[4], listSeparator)
+			argTotal, _ := strconv.ParseUint(args[5], 10, 64)
+			argCurrency := args[6]
+			argDecimals, _ := strconv.ParseUint(args[7], 10, 32)
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgCreateTxn(clientCtx.GetFromAddress().String(), argInvoiceNo, argProofs, argItems, argRemarks, argFiles)
+			msg := types.NewMsgCreateTxn(clientCtx.GetFromAddress().String(), argInvoiceNo, argProofs, argItems, argRemarks, argFiles, argTotal, argCurrency, uint32(argDecimals))
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

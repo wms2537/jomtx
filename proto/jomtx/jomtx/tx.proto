@@ -9,22 +9,28 @@ option go_package = "github.com/jomluz/jomtx/x/jomtx/types";
 // Msg defines the Msg service.
 service Msg {
   rpc CreateTxn (MsgCreateTxn) returns (MsgCreateTxnResponse);
+  
   // rpc UpdateTxn (MsgUpdateTxn) returns (MsgUpdateTxnResponse);
   // rpc DeleteTxn (MsgDeleteTxn) returns (MsgDeleteTxnResponse);
-  rpc ClaimTxn  (MsgClaimTxn ) returns (MsgClaimTxnResponse );
+  rpc ClaimTxn (MsgClaimTxn) returns (MsgClaimTxnResponse);
+  rpc PinIpfs  (MsgPinIpfs ) returns (MsgPinIpfsResponse );
 }
 message MsgCreateTxn {
            string creator   = 1;
            string invoiceNo = 2;
-           repeated string proofs  = 3;
+  repeated string proofs    = 3;
            string items     = 4;
            string remarks   = 5;
   repeated string files     = 6;
+           uint64 total     = 7;
+            string currency = 8;
+            uint32 decimals = 9;
 }
 
 message MsgCreateTxnResponse {
   uint64 id = 1;
 }
+
 
 // message MsgUpdateTxn {
 //            string creator   = 1;
@@ -42,13 +48,19 @@ message MsgCreateTxnResponse {
 //   string creator = 1;
 //   uint64 id      = 2;
 // }
-
 // message MsgDeleteTxnResponse {}
-
 message MsgClaimTxn {
   string creator = 1;
   string txnId   = 2;
 }
 
 message MsgClaimTxnResponse {}
+
+message MsgPinIpfs {
+  string creator      = 1;
+  string cid          = 2;
+  uint64 expectedSize = 3;
+}
+
+message MsgPinIpfsResponse {}
 

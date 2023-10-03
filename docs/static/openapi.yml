@@ -46488,6 +46488,7 @@ paths:
                 properties:
                   id:
                     type: string
+                    format: uint64
                   invoiceNo:
                     type: string
                   proofs:
@@ -46506,6 +46507,14 @@ paths:
                     type: string
                   customer:
                     type: string
+                  total:
+                    type: string
+                    format: uint64
+                  currency:
+                    type: string
+                  decimals:
+                    type: integer
+                    format: int64
         default:
           description: An unexpected error response.
           schema:
@@ -46529,6 +46538,7 @@ paths:
           in: path
           required: true
           type: string
+          format: uint64
       tags:
         - Query
 definitions:
@@ -75275,9 +75285,11 @@ definitions:
   jomtx.jomtx.MsgCreateTxnResponse:
     type: object
     properties:
-      string:
+      id:
         type: string
         format: uint64
+  jomtx.jomtx.MsgPinIpfsResponse:
+    type: object
   jomtx.jomtx.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -75289,6 +75301,7 @@ definitions:
         properties:
           id:
             type: string
+            format: uint64
           invoiceNo:
             type: string
           proofs:
@@ -75307,6 +75320,14 @@ definitions:
             type: string
           customer:
             type: string
+          total:
+            type: string
+            format: uint64
+          currency:
+            type: string
+          decimals:
+            type: integer
+            format: int64
   jomtx.jomtx.QueryParamsResponse:
     type: object
     properties:
@@ -75319,6 +75340,7 @@ definitions:
     properties:
       id:
         type: string
+        format: uint64
       invoiceNo:
         type: string
       proofs:
@@ -75337,3 +75359,11 @@ definitions:
         type: string
       customer:
         type: string
+      total:
+        type: string
+        format: uint64
+      currency:
+        type: string
+      decimals:
+        type: integer
+        format: int64
