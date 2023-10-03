@@ -15,17 +15,17 @@ service Query {
   
   // Parameters queries the parameters of the module.
   rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/jomluz/jomtx/jomtx/params";
+    option (google.api.http).get = "/wms2537/jomtx/jomtx/params";
   
   }
   
   // Queries a list of Txn items.
   rpc Txn    (QueryGetTxnRequest) returns (QueryGetTxnResponse) {
-    option (google.api.http).get = "/jomluz/jomtx/jomtx/txn/{id}";
+    option (google.api.http).get = "/wms2537/jomtx/jomtx/txn/{id}";
   
   }
   // rpc TxnAll (QueryAllTxnRequest) returns (QueryAllTxnResponse) {
-  //   option (google.api.http).get = "/jomluz/jomtx/jomtx/txn";
+  //   option (google.api.http).get = "/wms2537/jomtx/jomtx/txn";
   
   // }
 }

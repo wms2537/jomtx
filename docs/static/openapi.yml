@@ -46437,7 +46437,7 @@ paths:
                         }
       tags:
         - Query
-  /jomluz/jomtx/jomtx/params:
+  /wms2537/jomtx/jomtx/params:
     get:
       summary: Parameters queries the parameters of the module.
       operationId: JomtxJomtxParams
@@ -46473,7 +46473,7 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
-  /jomluz/jomtx/jomtx/txn/{id}:
+  /wms2537/jomtx/jomtx/txn/{id}:
     get:
       summary: Queries a list of Txn items.
       operationId: JomtxJomtxTxn
