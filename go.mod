@@ -1,4 +1,4 @@
-module github.com/jomluz/jomtx
+module github.com/wms2537/jomtx
 
 go 1.19
 
