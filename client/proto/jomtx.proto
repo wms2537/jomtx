@@ -1,0 +1,21 @@
+message QueryGetTxnRequest {
+    required uint64 id = 1;
+  }
+  
+  message QueryGetTxnResponse {
+    required Txn Txn = 1;
+  }
+  
+  message Txn {
+    required uint64 id = 1;
+    required string invoiceNo = 2; 
+    repeated string proofs = 3; 
+    required string items = 4; 
+    required string remarks = 5; 
+    repeated string files = 6; 
+    required string creator = 7;
+    optional string customer = 8;
+    required uint64 total = 9;
+    required string currency = 10;
+    required uint32 decimals = 11;
+  }

@@ -1,0 +1,1 @@
+export 'dart_js_fake.dart' if (dart.library.html) 'dart_js_real.dart';
