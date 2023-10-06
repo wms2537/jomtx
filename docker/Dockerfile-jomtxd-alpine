@@ -1,0 +1,16 @@
+FROM --platform=linux golang:alpine AS builder
+
+RUN apk update
+RUN apk add make
+
+WORKDIR /original
+ADD . /original
+RUN go build -o ./build/jomtxd ./cmd/jomtxd/main.go
+
+FROM --platform=linux alpine
+
+ENV LOCAL=/usr/local
+
+COPY --from=builder /original/build/jomtxd ${LOCAL}/bin/jomtxd
+
+ENTRYPOINT [ "jomtxd" ]

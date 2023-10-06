@@ -29,6 +29,9 @@ func (k msgServer) ClaimTxn(goCtx context.Context, msg *types.MsgClaimTxn) (*typ
 	if !found {
 		return nil, status.Error(codes.NotFound, "not found")
 	}
+	if val.Customer != "" {
+		return nil, status.Error(codes.AlreadyExists, "txn already claimed")
+	}
 	val.Customer = msg.Creator
 
 	k.SetTxn(ctx, val)
@@ -42,6 +45,7 @@ func (k msgServer) ClaimTxn(goCtx context.Context, msg *types.MsgClaimTxn) (*typ
 			sdk.NewAttribute(types.TxnClaimedEventTotal, fmt.Sprintf("%d", val.Total)),
 			sdk.NewAttribute(types.TxnClaimedEventCurrency, val.Currency),
 			sdk.NewAttribute(types.TxnClaimedEventDecimals, fmt.Sprintf("%d", val.Decimals)),
+			sdk.NewAttribute(types.TxnClaimedEventTimestamp, val.Timestamp),
 		),
 	)
 

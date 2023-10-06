@@ -23,6 +23,10 @@ func TestGenesis(t *testing.T) {
 			},
 		},
 		TxnCount: 2,
+		SystemInfo: &types.SystemInfo{
+			FifoHeadIndex: 100,
+			FifoTailIndex: 50,
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -36,5 +40,6 @@ func TestGenesis(t *testing.T) {
 
 	require.ElementsMatch(t, genesisState.TxnList, got.TxnList)
 	require.Equal(t, genesisState.TxnCount, got.TxnCount)
+	require.Equal(t, genesisState.SystemInfo, got.SystemInfo)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

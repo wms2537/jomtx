@@ -38,4 +38,13 @@ const (
 	TxnClaimedEventTotal     = "total"
 	TxnClaimedEventCurrency  = "currency"
 	TxnClaimedEventDecimals  = "decimals"
+	TxnClaimedEventTimestamp = "timestamp"
+)
+
+const (
+	NoFifoIndex = -1
+)
+
+const (
+	SystemInfoKey = "SystemInfo/value/"
 )

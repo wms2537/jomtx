@@ -3,6 +3,7 @@ package keeper
 import (
 	"context"
 	"strconv"
+	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/wms2537/jomtx/x/jomtx/types"
@@ -21,12 +22,20 @@ func (k msgServer) CreateTxn(goCtx context.Context, msg *types.MsgCreateTxn) (*t
 		Total:     msg.Total,
 		Currency:  msg.Currency,
 		Decimals:  msg.Decimals,
+		Timestamp: time.Now().Format(time.RFC3339),
 	}
 
 	id := k.AppendTxn(
 		ctx,
 		txn,
 	)
+
+	systemInfo, found := k.GetSystemInfo(ctx)
+	if !found {
+		panic("SystemInfo not found")
+	}
+
+	systemInfo.FifoTailIndex = id
 
 	ctx.EventManager().EmitEvent(
 		sdk.NewEvent(types.TxnCreatedEventType,

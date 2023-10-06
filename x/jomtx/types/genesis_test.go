@@ -31,6 +31,10 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				TxnCount: 2,
+				SystemInfo: &types.SystemInfo{
+					FifoHeadIndex: 18,
+					FifoTailIndex: 47,
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,

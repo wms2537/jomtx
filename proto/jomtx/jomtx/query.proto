@@ -7,6 +7,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "jomtx/jomtx/params.proto";
 import "jomtx/jomtx/txn.proto";
+import "jomtx/jomtx/system_info.proto";
 
 option go_package = "github.com/wms2537/jomtx/x/jomtx/types";
 
@@ -20,14 +21,21 @@ service Query {
   }
   
   // Queries a list of Txn items.
-  rpc Txn    (QueryGetTxnRequest) returns (QueryGetTxnResponse) {
+  rpc Txn (QueryGetTxnRequest) returns (QueryGetTxnResponse) {
     option (google.api.http).get = "/wms2537/jomtx/jomtx/txn/{id}";
   
   }
+
   // rpc TxnAll (QueryAllTxnRequest) returns (QueryAllTxnResponse) {
   //   option (google.api.http).get = "/wms2537/jomtx/jomtx/txn";
-  
+
   // }
+  
+  // Queries a SystemInfo by index.
+  rpc SystemInfo (QueryGetSystemInfoRequest) returns (QueryGetSystemInfoResponse) {
+    option (google.api.http).get = "/wms2537/jomtx/jomtx/system_info";
+  
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -47,6 +55,7 @@ message QueryGetTxnResponse {
   Txn Txn = 1 [(gogoproto.nullable) = false];
 }
 
+
 // message QueryAllTxnRequest {
 //   cosmos.base.query.v1beta1.PageRequest pagination = 1;
 // }
@@ -55,4 +64,9 @@ message QueryGetTxnResponse {
 //   repeated Txn                                    Txn        = 1 [(gogoproto.nullable) = false];
 //            cosmos.base.query.v1beta1.PageResponse pagination = 2;
 // }
+message QueryGetSystemInfoRequest {}
+
+message QueryGetSystemInfoResponse {
+  SystemInfo SystemInfo = 1 [(gogoproto.nullable) = false];
+}
 

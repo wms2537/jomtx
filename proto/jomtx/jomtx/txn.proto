@@ -15,4 +15,5 @@ message Txn {
   uint64 total = 9;
   string currency = 10;
   uint32 decimals = 11;
+  string timestamp = 12;
 }

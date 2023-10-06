@@ -1,0 +1,10 @@
+syntax = "proto3";
+package jomtx.jomtx;
+
+option go_package = "github.com/wms2537/jomtx/x/jomtx/types";
+
+message SystemInfo {
+  uint64 fifoHeadIndex = 1; 
+  uint64 fifoTailIndex = 2; 
+  
+}
