@@ -1,0 +1,57 @@
+version: "3.7"
+
+networks:
+  net-kms:
+  net-val:
+  net-public:
+
+services:
+
+  kms:
+    hostname: kms
+    command: start --config /root/tmkms/tmkms.toml -v
+    container_name: kms
+    image: wms2537/tmkms_i:v0.12.2
+    networks:
+      - net-kms
+    volumes:
+      - ./kms:/root/tmkms
+
+  val:
+    hostname: val
+    command: start
+    container_name: val
+    depends_on:
+      - kms
+    image: wms2537/jomtxd_i
+    networks:
+      - net-kms
+      - net-val
+    volumes:
+      - ./val:/root/.jomtx
+
+  sentry:
+    hostname: sentry
+    command: start
+    depends_on:
+      - val
+    container_name: sentry
+    image: wms2537/jomtxd_i
+    networks:
+      - net-val
+      - net-public
+    volumes:
+      - ./sentry:/root/.jomtx
+
+  public:
+    hostname: public
+    command: start
+    depends_on:
+      - sentry
+    container_name: public
+    image: wms2537/jomtxd_i
+    networks:
+      - net-public
+    volumes:
+      - ./public:/root/.jomtx
+

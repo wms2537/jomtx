@@ -1,16 +1,16 @@
-FROM --platform=linux golang:alpine AS builder
-
+FROM --platform=$BUILDPLATFORM golang:alpine AS builder
+ARG TARGETARCH
 RUN apk update
 RUN apk add make
 
 WORKDIR /original
 ADD . /original
-RUN go build -o ./build/jomtxd ./cmd/jomtxd/main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o ./build/jomtxd-linux-${TARGETARCH} ./cmd/jomtxd/main.go
 
-FROM --platform=linux alpine
-
+FROM --platform=$TARGETPLATFORM alpine
+ARG TARGETARCH
 ENV LOCAL=/usr/local
 
-COPY --from=builder /original/build/jomtxd ${LOCAL}/bin/jomtxd
+COPY --from=builder /original/build/jomtxd-linux-${TARGETARCH} ${LOCAL}/bin/jomtxd
 
 ENTRYPOINT [ "jomtxd" ]

@@ -1,0 +1,21 @@
+# Faucet: docker buildx build -f docker/Dockerfile-faucet -t wms2537/jomtx_faucet_i --push --platform linux/amd64,linux/arm64 .
+FROM --platform=$TARGETPLATFORM node:alpine AS cosmos-faucet
+
+RUN npm install @cosmjs/faucet@ --global --production
+
+ENV FAUCET_CONCURRENCY=2
+ENV FAUCET_PORT=4500
+ENV FAUCET_GAS_PRICE=0.001stake
+# Prepared keys for determinism
+ENV FAUCET_MNEMONIC="birth zebra bounce onion convince arrive drill soft harsh matter apple want very guide cancel wash acoustic debris sadness cousin shiver drive knife dismiss"
+ENV FAUCET_ADDRESS_PREFIX=jomtx
+ENV FAUCET_TOKENS="stake, token"
+ENV FAUCET_CREDIT_AMOUNT_STAKE=100
+ENV FAUCET_CREDIT_AMOUNT_TOKEN=100
+ENV FAUCET_COOLDOWN_TIME=0
+
+EXPOSE 4500
+
+ENTRYPOINT [ "cosmos-faucet" ]
+
+
